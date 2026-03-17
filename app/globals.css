@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.section-pad {
+  @apply px-6 py-20 md:px-10 md:py-28;
+}
+
+.section-container {
+  @apply mx-auto max-w-6xl;
+}
+
+.grid-cards {
+  @apply grid gap-5 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-spectra-orange focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+}
+
+.hero-depth-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255, 59, 0, 0.15), transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(140, 0, 0, 0.12), transparent 62%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+}
+
+.hero-noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.45) 1px, transparent 0);
+  background-size: 3px 3px;
+  mix-blend-mode: soft-light;
+}
+
+.hero-particle-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 59, 0, 0.42) 1px, transparent 0),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px, 56px 56px, 56px 56px;
+}
+
+.hero-float-shape {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(32px);
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.cursor-glow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 360px;
+  height: 360px;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 59, 0, 0.5) 0%, rgba(255, 59, 0, 0.15) 30%, rgba(255, 59, 0, 0) 70%);
+  filter: blur(16px);
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

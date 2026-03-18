@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState } from "react";
 import CalculatorField from "@/components/ui/CalculatorField";
@@ -12,7 +12,7 @@ import { useLocale } from "@/components/providers/LocaleProvider";
 const DEFAULT_OBJECTS = 500;
 
 const ASSUMPTIONS = {
-  avgMinutesPerObject: 14,
+  avgMinutesPerObject: 11,
   swissHourlyRate: 80,
   partnershipEfficiencyPercent: 40,
 } as const;

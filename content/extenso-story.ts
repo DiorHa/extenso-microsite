@@ -224,9 +224,9 @@ export const trustMetrics: StoryMetric[] = [
   },
   {
     label: "Average Entry Time",
-    numberValue: 14,
+    numberValue: 11,
     suffix: " min",
-    note: "Per object (typically 10-14 minutes in operational delivery)",
+    note: "Per object (typically 8-13 minutes in operational delivery)",
   },
   {
     label: "Template Layer",

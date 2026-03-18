@@ -15,9 +15,9 @@ export const impactMetrics: Metric[] = [
   },
   {
     label: "Data Entry Time",
-    value: 14,
+    value: 11,
     suffix: " min",
-    description: "Average entry cycle per object ranges from 10 to 14 minutes.",
+    description: "Average entry cycle per object ranges from 8 to 13 minutes.",
   },
   {
     label: "AI Templates",

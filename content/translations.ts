@@ -1,4 +1,4 @@
-﻿export type Locale = "en" | "de";
+export type Locale = "en" | "de";
 
 export const DEFAULT_LOCALE: Locale = "en";
 export const LOCALE_STORAGE_KEY = "spectra-locale";
@@ -159,7 +159,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       workflowCta: "See Workflow",
       metrics: [
         { label: "Portfolio Objects", numberValue: 500, suffix: "+", note: "Supported in structured onboarding workflows" },
-        { label: "Average Entry Time", numberValue: 14, suffix: " min", note: "Per object (typically 10-14 minutes in operational delivery)" },
+        { label: "Average Entry Time", numberValue: 11, suffix: " min", note: "Per object (typically 8-13 minutes in operational delivery)" },
         { label: "Template Layer", numberValue: 5, suffix: "+", note: "AI-enabled master data templates in active use" },
       ],
     },
@@ -275,7 +275,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       swissCost: "Estimated Swiss-equivalent delivery cost",
       savings: "Estimated savings with Spectra",
       spectraCost: "Estimated Spectra delivery cost",
-      note: "Based on fixed assumptions: 14 min per object, CHF 80 Swiss hourly rate, and a 40% efficiency gain through Spectra delivery partnership.",
+      note: "Based on fixed assumptions: 11 min per object, CHF 80 Swiss hourly rate, and a 40% efficiency gain through Spectra delivery partnership.",
     },
     impact: {
       eyebrow: "Measured Impact",
@@ -283,7 +283,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       description: "The collaboration between Spectra and eXtenso demonstrates repeatable throughput, improved consistency, and meaningful cost efficiency at implementation scale.",
       metrics: [
         { label: "Objects Onboarded", value: 500, suffix: "+", description: "Real estate objects structured and prepared for RIMO onboarding workflows." },
-        { label: "Data Entry Time", value: 14, suffix: " min", description: "Average entry cycle per object ranges from 10 to 14 minutes." },
+        { label: "Data Entry Time", value: 11, suffix: " min", description: "Average entry cycle per object ranges from 8 to 13 minutes." },
         { label: "AI Templates", value: 5, suffix: "+", description: "AI-enabled master data templates designed for consistency and speed." },
         { label: "Cost Reduction", value: 40, suffix: "%", description: "Compared to equivalent Switzerland-based operational delivery models." },
       ],
@@ -341,7 +341,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       workflowCta: "Ablauf ansehen",
       metrics: [
         { label: "Immobilienobjekte", numberValue: 500, suffix: "+", note: "Unterstützt in strukturierten Onboarding-Workflows" },
-        { label: "Ø Erfassungszeit", numberValue: 14, suffix: " Min", note: "Pro Objekt (typisch 10-14 Minuten im operativen Delivery)" },
+        { label: "Ø Erfassungszeit", numberValue: 11, suffix: " Min", note: "Pro Objekt (typisch 8-13 Minuten im operativen Delivery)" },
         { label: "Template-Layer", numberValue: 5, suffix: "+", note: "KI-gestützte Stammdaten-Templates im aktiven Einsatz" },
       ],
     },
@@ -457,7 +457,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       swissCost: "Geschätzte lokale Delivery-Kosten",
       savings: "Geschätzte Einsparungen mit Spectra",
       spectraCost: "Geschätzte Spectra-Delivery-Kosten",
-      note: "Basierend auf fixen Annahmen: 14 Min pro Objekt, CHF 80 Schweizer Stundensatz und 40 % Effizienzgewinn durch die Spectra-Delivery-Partnerschaft.",
+      note: "Basierend auf fixen Annahmen: 11 Min pro Objekt, CHF 80 Schweizer Stundensatz und 40 % Effizienzgewinn durch die Spectra-Delivery-Partnerschaft.",
     },
     impact: {
       eyebrow: "Messbare Wirkung",
@@ -465,7 +465,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       description: "Die Zusammenarbeit von Spectra und eXtenso zeigt wiederholbaren Durchsatz, höhere Datenkonsistenz und deutliche Kosteneffizienz im Implementierungsmaßstab.",
       metrics: [
         { label: "Onboardete Objekte", value: 500, suffix: "+", description: "Immobilienobjekte wurden für RIMO-Onboarding strukturiert und vorbereitet." },
-        { label: "Erfassungszeit", value: 14, suffix: " Min", description: "Die durchschnittliche Erfassungszeit pro Objekt liegt bei 10 bis 14 Minuten." },
+        { label: "Erfassungszeit", value: 11, suffix: " Min", description: "Die durchschnittliche Erfassungszeit pro Objekt liegt bei 8 bis 13 Minuten." },
         { label: "KI-Templates", value: 5, suffix: "+", description: "KI-gestützte Stammdaten-Templates für Konsistenz und Geschwindigkeit." },
         { label: "Kostenreduktion", value: 40, suffix: "%", description: "Gegenüber einer operativen Leistungserbringung in der Schweiz." },
       ],

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle2, Layers3, ShieldCheck, TrendingUp } from "lucide-react";
@@ -6,8 +6,8 @@ import { useCallback, useRef, useState, useSyncExternalStore } from "react";
 import Button from "@/components/ui/Button";
 import LogoCloud from "@/components/ui/LogoCloud";
 import StatBadge from "@/components/ui/StatBadge";
-import { heroContent, trustMetrics } from "@/content/extenso-story";
 import { trackEvent } from "@/lib/analytics";
+import { useLocale } from "@/components/providers/LocaleProvider";
 
 function useFinePointer() {
   return useSyncExternalStore(
@@ -22,25 +22,10 @@ function useFinePointer() {
   );
 }
 
-const heroSignals = [
-  {
-    title: "Faster Onboarding",
-    detail: "Reduced setup friction before RIMO data entry and configuration.",
-    icon: TrendingUp,
-  },
-  {
-    title: "System-Ready Data",
-    detail: "Structured records aligned to RIMO onboarding workflows.",
-    icon: Layers3,
-  },
-  {
-    title: "Cost-Efficient Delivery",
-    detail: "Multilingual pod model with lower operational overhead.",
-    icon: CheckCircle2,
-  },
-];
+const heroSignalIcons = [TrendingUp, Layers3, CheckCircle2] as const;
 
 export default function HeroSection() {
+  const { t } = useLocale();
   const reduceMotion = useReducedMotion();
   const hasFinePointer = useFinePointer();
   const canUsePointerGlow = !reduceMotion && hasFinePointer;
@@ -85,24 +70,9 @@ export default function HeroSection() {
 
       {reduceMotion ? null : (
         <>
-          <motion.div
-            aria-hidden="true"
-            className="hero-float-shape left-[6%] top-[12%] h-32 w-32 bg-spectra-orange/10"
-            animate={{ y: [0, -22, 0], x: [0, 8, 0] }}
-            transition={{ duration: 36, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            aria-hidden="true"
-            className="hero-float-shape right-[18%] top-[8%] h-24 w-24 bg-spectra-red/10"
-            animate={{ y: [0, 16, 0], x: [0, -10, 0] }}
-            transition={{ duration: 48, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            aria-hidden="true"
-            className="hero-float-shape left-[40%] bottom-[8%] h-20 w-20 bg-white/5"
-            animate={{ y: [0, -12, 0], x: [0, 6, 0] }}
-            transition={{ duration: 58, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <motion.div aria-hidden="true" className="hero-float-shape left-[6%] top-[12%] h-32 w-32 bg-spectra-orange/10" animate={{ y: [0, -22, 0], x: [0, 8, 0] }} transition={{ duration: 36, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div aria-hidden="true" className="hero-float-shape right-[18%] top-[8%] h-24 w-24 bg-spectra-red/10" animate={{ y: [0, 16, 0], x: [0, -10, 0] }} transition={{ duration: 48, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div aria-hidden="true" className="hero-float-shape left-[40%] bottom-[8%] h-20 w-20 bg-white/5" animate={{ y: [0, -12, 0], x: [0, 6, 0] }} transition={{ duration: 58, repeat: Infinity, ease: "easeInOut" }} />
         </>
       )}
 
@@ -110,11 +80,7 @@ export default function HeroSection() {
         <motion.div
           aria-hidden="true"
           className="cursor-glow"
-          animate={{
-            x: pointer.x - 180,
-            y: pointer.y - 180,
-            opacity: pointer.active ? 0.35 : 0,
-          }}
+          animate={{ x: pointer.x - 180, y: pointer.y - 180, opacity: pointer.active ? 0.35 : 0 }}
           transition={{ type: "spring", stiffness: 130, damping: 24, mass: 0.5 }}
         />
       ) : null}
@@ -127,108 +93,58 @@ export default function HeroSection() {
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute right-[-140px] top-[-80px] hidden w-[760px] opacity-[0.08] blur-[4px] lg:block"
-        animate={
-          reduceMotion
-            ? undefined
-            : {
-                y: [0, -22, 0],
-                rotate: [0, -1.2, 0],
-              }
-        }
+        animate={reduceMotion ? undefined : { y: [0, -22, 0], rotate: [0, -1.2, 0] }}
         transition={{ duration: 38, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="section-container relative z-10">
-        <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.18em] text-spectra-orange"
-        >
-          {heroContent.eyebrow}
+        <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-xs uppercase tracking-[0.18em] text-spectra-orange">
+          {t.hero.eyebrow}
         </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.08 }}
-          className="mt-5 max-w-4xl text-4xl font-semibold leading-tight text-white md:text-6xl"
-        >
-          Faster Portfolio Onboarding. Lower Implementation Friction.
+        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.08 }} className="mt-5 max-w-4xl text-4xl font-semibold leading-tight text-white md:text-6xl">
+          {t.hero.title}
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.14 }}
-          className="mt-6 max-w-5xl text-xl leading-relaxed text-spectra-light"
-        >
-          Through a dedicated Spectra pod, eXtenso scales Swiss real estate onboarding capacity without compromising quality.
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.14 }} className="mt-6 max-w-5xl text-xl leading-relaxed text-spectra-light">
+          {t.hero.subtitle}
+        </motion.p>
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.18 }} className="mt-4 max-w-5xl text-sm leading-relaxed text-zinc-300 md:text-base">
+          {t.hero.support}
         </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.18 }}
-          className="mt-4 max-w-5xl text-sm leading-relaxed text-zinc-300 md:text-base"
-        >
-          Operational scope centered on <span className="font-semibold text-white">RIMO platform onboarding</span>, data structuring, and go-live readiness.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.22 }}
-          className="mt-6 grid max-w-5xl gap-3 md:grid-cols-3"
-        >
-          {heroSignals.map((signal, index) => (
-            <motion.div
-              key={signal.title}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: 0.25 + index * 0.08 }}
-              className="group rounded-xl border border-white/12 bg-white/[0.02] px-4 py-3 transition-all duration-200 hover:-translate-y-1 hover:border-white/25 hover:shadow-[0_10px_24px_rgba(0,0,0,0.28)]"
-            >
-              <div className="flex items-start gap-3">
-                <signal.icon className="mt-0.5 h-4 w-4 text-spectra-orange transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
-                <div>
-                  <p className="text-sm font-semibold text-white">{signal.title}</p>
-                  <p className="mt-1 text-xs leading-5 text-zinc-400">{signal.detail}</p>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.22 }} className="mt-6 grid max-w-5xl gap-3 md:grid-cols-3">
+          {t.hero.signals.map((signal, index) => {
+            const Icon = heroSignalIcons[index] ?? heroSignalIcons[0];
+            return (
+              <motion.div key={signal.title} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: 0.25 + index * 0.08 }} className="group rounded-xl border border-white/12 bg-white/[0.02] px-4 py-3 transition-all duration-200 hover:-translate-y-1 hover:border-white/25 hover:shadow-[0_10px_24px_rgba(0,0,0,0.28)]">
+                <div className="flex items-start gap-3">
+                  <Icon className="mt-0.5 h-4 w-4 text-spectra-orange transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
+                  <div>
+                    <p className="text-sm font-semibold text-white">{signal.title}</p>
+                    <p className="mt-1 text-xs leading-5 text-zinc-400">{signal.detail}</p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.3 }}
-          className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-4 py-2 text-sm text-white"
-        >
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.3 }} className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-4 py-2 text-sm text-white">
           <ShieldCheck className="h-4 w-4 text-spectra-orange" aria-hidden="true" />
-          Trusted across 500+ real estate objects in active RIMO onboarding workflows.
+          {t.hero.trustLine}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.36 }}
-          className="mt-10 flex flex-wrap gap-4"
-        >
-          <Button href="#challenge" onClick={() => trackEvent("hero_cta_explore")}>Explore the Value Story</Button>
-          <Button href="#workflow" variant="secondary">
-            See Workflow
-          </Button>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.36 }} className="mt-10 flex flex-wrap gap-4">
+          <Button href="#challenge" onClick={() => trackEvent("hero_cta_explore")}>{t.hero.exploreCta}</Button>
+          <Button href="#workflow" variant="secondary">{t.hero.workflowCta}</Button>
         </motion.div>
 
         <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {trustMetrics.map(metric => (
+          {t.hero.metrics.map(metric => (
             <StatBadge
               key={metric.label}
               label={metric.label}
-              value={metric.value}
               numberValue={metric.numberValue}
               suffix={metric.suffix}
-              prefix={metric.prefix}
               note={metric.note}
             />
           ))}

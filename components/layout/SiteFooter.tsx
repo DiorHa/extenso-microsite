@@ -1,9 +1,13 @@
+﻿"use client";
+
 import { useMemo } from "react";
 import Image from "next/image";
 import { brand } from "@/content/branding";
+import { useLocale } from "@/components/providers/LocaleProvider";
 
 export default function SiteFooter() {
   const year = useMemo(() => new Date().getFullYear(), []);
+  const { t } = useLocale();
 
   return (
     <footer className="border-t border-white/10 bg-black/90">
@@ -11,17 +15,16 @@ export default function SiteFooter() {
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
             <Image src={brand.logos.white} alt="Spectra" width={154} height={38} />
-            <p className="mt-4 max-w-md text-sm text-spectra-light">
-              Scalable data operations pods for high-precision ERP and digitalization delivery.
-            </p>
+            <p className="mt-4 max-w-md text-sm text-spectra-light">{t.footer.line}</p>
           </div>
 
           <div className="space-y-3 text-sm text-spectra-light">
-            <p>www.spectra.support</p>
-            <p>Copyright {year} Spectra. All rights reserved.</p>
+            <p>{t.footer.site}</p>
+            <p>Copyright {year} Spectra. {t.footer.copyright}</p>
           </div>
         </div>
       </div>
     </footer>
   );
 }
+

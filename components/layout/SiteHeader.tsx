@@ -1,29 +1,34 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { navigation } from "@/content/navigation";
 import { cn } from "@/lib/utils";
+import { useLocale } from "@/components/providers/LocaleProvider";
+import LanguageToggle from "@/components/layout/LanguageToggle";
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { t } = useLocale();
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/70 backdrop-blur-xl">
-      <div className="section-container flex h-16 items-center justify-between">
+      <div className="section-container flex h-16 items-center justify-between gap-4">
         <Link href="/" aria-label="Go to homepage" className="focus-ring inline-flex items-center">
           <Image src="/brand/Logo_white.svg" alt="Spectra" width={130} height={32} priority />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
-          {navigation.map(item => (
-            <a key={item.href} href={item.href} className="focus-ring text-sm text-spectra-light transition hover:text-white">
-              {item.label}
-            </a>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-4 md:flex">
+          <nav className="items-center gap-7 md:flex" aria-label="Primary">
+            {t.nav.items.map(item => (
+              <a key={item.href} href={item.href} className="focus-ring text-sm text-spectra-light transition hover:text-white">
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <LanguageToggle />
+        </div>
 
         <button
           type="button"
@@ -43,8 +48,11 @@ export default function SiteHeader() {
         )}
         aria-label="Mobile"
       >
+        <div className="mb-4">
+          <LanguageToggle />
+        </div>
         <ul className="space-y-3">
-          {navigation.map(item => (
+          {t.nav.items.map(item => (
             <li key={item.href}>
               <a
                 href={item.href}
@@ -60,3 +68,4 @@ export default function SiteHeader() {
     </header>
   );
 }
+
